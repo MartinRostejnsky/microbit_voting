@@ -1,4 +1,4 @@
-#Do not touch anything unless you know what you’re doing, and you have read readme.txt!
+#Do not touch anything unless you know what you're doing, and you have read readme.txt!
 
 #Configuration
 radio.set_group(69) #Radio channel
@@ -8,6 +8,7 @@ options = 4 #Number of options, HAS TO BE BIGGER THAN 0, maximal recommended num
 
 #The rest of the code is not capable of user manipulation!
 
+enabled = 0
 basic.show_icon(IconNames.NO)
 
 def on_button_pressed_a():
@@ -24,19 +25,24 @@ def on_button_pressed_b():
     basic.show_string(String.from_char_code(answer+65))
 
 def on_button_pressed_ab():
-    radio.send_value("answer", answer+65)
-    basic.show_icon(IconNames.YES)
+    if enabled == 1:
+        radio.send_value("vote", answer+1)
+        basic.show_icon(IconNames.YES)
+    else:
+        basic.show_icon(IconNames.NO)
     pause(100)
     basic.show_icon(IconNames.HEART)
     pause(100)
     basic.show_string(String.from_char_code(answer+65))
 
 def on_received_value(name, value):
+    global enabled
     if name == "enabled":
+        enabled = value
         basic.show_icon(IconNames.HEART)
         pause(100)
         basic.show_string(String.from_char_code(answer+65))
-    if name == "vote_recorded":
+    if name == "ack":
         print(value)
 
 radio.on_received_value(on_received_value)
