@@ -22,15 +22,14 @@ A voting system for micro:bit.
 
 ## **RADIO PROTOCOLS:**
 
-1. `"enabled" 1` #Value sent by server to the client to signal the start of the voting proccess.
+1. `"enabled" 0/1` #Value sent by server to the client to signal the state of the voting proccess.
 2. `"vote_recorded" {serial_number}` #Value sent by server to the client to signal the recorded vote.
 3. `"answer" {answer}` #Value sent by client to server that contains the voter’s answer.
 
 ## **ADDITIONAL NOTES:**
 
-1. If you want to change anything in either server or client, do so before downloading the program to your device, and don’t touch anything you don’t understand.
+1. If you want to change anything in either server or client, do so before installing the program to your device, and don’t touch anything you don’t understand.
 2. Try not to change anything outside the configuration section.
 3. Note that any wrong manipulation with the codes may cause them not to work as intended or not to work at all!
-4. DO NOT EVER try to simplify the code by removing the "0"s from empty lists. (They are there because of MicroBit not supporting empty arrays.)
-5. If you turn your serial number transmission off, the server won’t accept your answers!
-6. Recommended tool for installing the code is [Microsoft Makecode for micro:bit](https://makecode.microbit.org/#editor)
+4. If you turn your serial number transmission off, the server won’t accept your answers!
+5. Recommended tool for installing the code is [Microsoft Makecode for micro:bit](https://makecode.microbit.org/#editor)
